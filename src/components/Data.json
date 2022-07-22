@@ -1,0 +1,77 @@
+[
+  {
+    "id": "1",
+    "nombre": "Radiador",
+    "familia": "Refrigeracion",
+    "marca": "Ford",
+    "modelo": "Fiesta",
+    "version": "S",
+    "año": "13/17",
+    "stock": 10,
+    "codigo": "cn15/8200/ba",
+    "precio": "70000",
+    "imagen": "/img/Radiador.jpg",
+    "descripcion": "Radiador de aluminio"
+  },
+
+  {
+    "id": "2",
+    "nombre": "Optica",
+    "familia": "Electricidad",
+    "marca": "Fiat",
+    "modelo": "Toro",
+    "version": "Freedom",
+    "año": "2022",
+    "stock": 9,
+    "codigo": "8n15/13005/ba",
+    "precio": "25000",
+    "imagen": "/img/Optica.jpg",
+    "descripcion": "Optica Halogena lado Izquierdo"
+  },
+
+  {
+    "id": "3",
+    "nombre": "Espejo",
+    "familia": "Carroceria",
+    "marca": "Peugeot",
+    "modelo": "308",
+    "version": "S",
+    "año": "2021",
+    "stock": 5,
+    "codigo": "ab39/8230/ca",
+    "precio": "35000",
+    "imagen": "/img/Espejo.jpg",
+    "descripcion": "Espejo calefaccionado"
+  },
+
+  {
+    "id": "4",
+    "nombre": "Puerta",
+    "familia": "Chapa",
+    "marca": "Chevrolet",
+    "modelo": "Onix",
+    "version": "joy",
+    "año": "2017",
+    "stock": 3,
+    "codigo": "an15/n16016/ba",
+    "precio": "40000",
+    "imagen": "/img/Puerta.jpg",
+    "descripcion": "Puerta trasera derecha"
+  },
+
+  {
+    "id": "5",
+    "nombre": "Módulo ECU",
+    "familia": "Electricidad",
+    "marca": "Toyota",
+    "modelo": "Etios",
+    "version": "Cross",
+    "año": "13/17",
+    "stock": 8,
+    "codigo": "an15/n16018/ba",
+    "precio": "40000",
+    "imagen": "/img/Modulo.jpg",
+    "descripcion": "Modulo de airbags"
+  }
+]
+

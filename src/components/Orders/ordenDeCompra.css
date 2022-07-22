@@ -1,0 +1,38 @@
+.orderMain{
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    background-color: #eeeeee;
+    text-align: center;
+}
+
+.orderSuccess{
+    color: #39B54A;
+}
+
+.toHome{
+    margin-top: 30px;
+}
+/*-----------------------------------breakpoint 768px--------------------------------------*/
+
+@media (min-width: 768px) { 
+    .orderMain{
+        height: 80vw; 
+    }
+}
+/*-----------------------------------breakpoint 1024px--------------------------------------*/
+
+@media (min-width: 1024px) { 
+    .orderMain{
+        height: 60vw; 
+    }
+}
+/*-----------------------------------breakpoint 1440px--------------------------------------*/
+
+@media (min-width: 1440px) { 
+    .orderMain{
+        height: 35vw; 
+    }
+}

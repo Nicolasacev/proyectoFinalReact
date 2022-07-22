@@ -1,0 +1,23 @@
+.ItemListContainer{
+  background: rgb(10, 48, 85);
+  background: linear-gradient(to bottom,black, rgb(10, 48, 85));
+  width: 100%;
+  min-height: calc(100vh - 8em)
+}
+
+.Container{
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-flow: row wrap;
+}
+.loader{
+  margin-top: 5rem;
+}
+
+@media (min-width: 1600px) { 
+  .ItemListContainer{
+    height: 36vw;
+  }
+}

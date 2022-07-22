@@ -1,0 +1,114 @@
+.totalContainer{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content:space-evenly;
+}
+
+@media (max-width: 320px) {
+    .totalContainer{
+        flex-flow: column nowrap;
+        align-items: center;  
+        justify-content: space-evenly; 
+        height: 10rem; 
+    }
+
+    .empty{
+        height: 90vw;    
+    }
+}
+
+.list{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    margin-top: 20px;
+}
+
+tbody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+}
+
+tr{
+    display: flex;
+    flex-flow: row wrap;
+    background: linear-gradient(to bottom, rgb(10, 48, 85), black);
+    color: azure;
+    width: 80vw;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+tr:hover{
+    box-shadow: -8px 5px 39px 0px rgba(0,0,0,0.66);
+    -webkit-box-shadow: -8px 5px 39px 0px rgba(0,0,0,0.66);
+    -moz-box-shadow: -8px 5px 39px 0px rgba(0,0,0,0.66);
+}
+
+td, th{
+    border: none;
+}
+
+p, h6{
+    margin-bottom: 0;
+}
+
+.buy{
+    background: radial-gradient( 100% 80% at 90% 0%, yellow 0%, orange 100% );
+}
+
+.empty{
+    height: 25em;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.toHome{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: dodgerblue;
+    color: azure;
+    font-weight: bolder;
+    box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%), inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+}
+
+.toHome:hover {
+        box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #3c4fe0;
+        transform: translateY(-0.1em);
+}
+
+/*-----------------------------------breakpoint 768px--------------------------------------*/
+@media (min-width: 768px) {
+    .empty{
+        height: 80vw;    
+    }
+}
+
+/*-----------------------------------breakpoint 1024px--------------------------------------*/
+@media (min-width: 1024px) { 
+    .empty{
+        height: 60vw;    
+    }
+}
+
+/*-----------------------------------breakpoint 1440px--------------------------------------*/
+@media (min-width: 1440px) { 
+    .empty{
+        height: 55vw;    
+    }
+}
+
+/*-----------------------------------breakpoint 1440px--------------------------------------*/
+@media (min-width: 1600px) { 
+    .empty{
+        height: 38vw;    
+    }
+}
