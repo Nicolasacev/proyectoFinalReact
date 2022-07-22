@@ -12,3 +12,9 @@
     align-self: center;
 }
 
+@media (max-width: 650px) {
+    tr{
+        display: flex;
+        flex-flow: column nowrap;
+    }
+}
