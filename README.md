@@ -8,7 +8,7 @@
 
 > Crash-Parts es un ecommerce de repuestos del sector automotriz. Desarrollada con React.js y Firebase. Simula el proceso de compra de un producto, desde la elección de un producto hasta la generación de la orden de compra.
 
-### ✨ [Demo](www.nicolasacevedo.com.ar)
+### ✨ [Demo](https://crash-parts.netlify.app/)
 
 ## Install
 
