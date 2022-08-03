@@ -4,10 +4,9 @@ import { CartContext } from '../CartContext/CartContext';
 import { Link } from 'react-router-dom';
 
 const OrdenDeCompra = ({lastId}) => {
-  const { setLastId, setBuyIsFinished } = useContext(CartContext)
+  const { setBuyIsFinished } = useContext(CartContext)
 
   const cleanOrder = () => {
-    setLastId()
     setBuyIsFinished(false)
   }
 

@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../CartContext/CartContext";
 
 export const CartWidget = () => {
-  const { cant, cartIsEmpty } = useContext(CartContext)
+  const { cant, cart} = useContext(CartContext)
+
+  const carrito = [...cart]
   return (
     <>
-      { cartIsEmpty === false 
+      { (carrito.length > 0)
       ? 
       <div className="cartContainer">
         <Link to="/cart">

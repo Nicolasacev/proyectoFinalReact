@@ -5,10 +5,11 @@ import { CartItem } from '../CartItem/CartItem';
 import { CartContext } from '../CartContext/CartContext';
 
 export const CartList = () => {
-    const { totalPrice, cleanCart, cartIsEmpty } = useContext(CartContext)
+    const { totalPrice, cleanCart, cart } = useContext(CartContext)
+    const carrito = [...cart]
     return (
         <>
-         { cartIsEmpty === false 
+         { (carrito.length > 0)
          ?
          <>
          <table className="table list">

@@ -4,21 +4,19 @@ import { addDoc, collection, getFirestore } from "firebase/firestore";
 export const CartContext = createContext();
 
 export const CartProvider = ({children}) => {
+
+    let orderId; 
+
     //useState del carrito
     const [cart, setCart] = useState([]);
     //useSataet de la cantidad de unidades de cada producto
     const [cant, setCant] = useState(0);
     //useState que maneja el precio total
     const [totalPrice, setTotalPrice] = useState(0)
-    //useState que maneja el estado del carrito vacio/con productos
-    const [cartIsEmpty, setCartIsEmpty] = useState(true);
-    //estado que guarda el id de la ultima orden de compra para entregarsela al usuario
-    const [lastId, setLastId] = useState()
     //obtener db de firestore
     const db = getFirestore();
     //estado que indica si ya se realizola compra
     const [buyIsFinished, setBuyIsFinished] = useState(false);
-
     //función para agregar elementos al carrito
     const addItemToCart = (producto, count) => {
         
@@ -45,14 +43,12 @@ export const CartProvider = ({children}) => {
         setCant(cant + count)
         //Sumamos el precio de los elementos al total
         setTotalPrice(totalPrice + (precio * count));
-        //seteamos cartIsEmpty a false
-        setCartIsEmpty(false);
                
     }
 
     //función para remover elementos
     const removeFromCart = (product) => {
-        if (cart.length === 1) setCartIsEmpty(true);
+        
         const remove = cart.findIndex(p => p.id === product.id)
         const totalItemPrice = (cart[remove].precio * cart[remove].cantidad)
             
@@ -67,13 +63,11 @@ export const CartProvider = ({children}) => {
         setCart([])
         setCant(0)
         setTotalPrice(0)
-        setCartIsEmpty(true)
     }
 
     const onSubmit = async(data) => {
-          const order = 
-            {Buyer: 
-                {
+        const order = {
+            Buyer: {
                 name:data.name,
                 email:data.email,
                 phone:data.phone
@@ -85,17 +79,16 @@ export const CartProvider = ({children}) => {
                     precio: e.precio,
                     cantidad: e.cantidad
                 }
-            }),
-                    
+            }), 
             Total: {
                     totalPrice
-                }
             }
+        }
             
-            const {id} = await addDoc(collection(db, "orders"), order);
-            setLastId(id)
-            setBuyIsFinished(true)
-            cleanCart()   
+        orderId = await addDoc(collection(db, "orders"), order);
+        
+        setBuyIsFinished(true)
+        cleanCart()   
     }
 
     return (
@@ -103,9 +96,7 @@ export const CartProvider = ({children}) => {
              cart,
              cant,
              totalPrice,
-             cartIsEmpty,
-             lastId,
-             setLastId,
+             orderId,
              buyIsFinished,
              setBuyIsFinished,
              addItemToCart,

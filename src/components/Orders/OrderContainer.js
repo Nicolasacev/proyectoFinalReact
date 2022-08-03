@@ -6,17 +6,20 @@ import { Cart } from '../Cart/Cart';
 
 export const OrderContainer = () => {
 
-  const { lastId, buyIsFinished, cartIsEmpty} = useContext(CartContext)
+  const { orderId, buyIsFinished, cart} = useContext(CartContext)
+
+  const carrito = [...cart].length
+  const id = orderId.id
 
   return (
     <>
       {
-        (cartIsEmpty && !lastId) && <Cart/>
+        (carrito > 0 && id !== "") && <Cart/>
       }
-      {(!cartIsEmpty && !buyIsFinished) && <Form/>}
+      {( carrito > 0  && !buyIsFinished) && <Form/>}
       
       {
-       (lastId) && <OrdenDeCompra lastId={lastId}/>
+       (id) && <OrdenDeCompra lastId={id}/>
       }
     </>
   )
