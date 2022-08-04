@@ -9,18 +9,14 @@ export const OrderContainer = () => {
   const { orderId, buyIsFinished, cart} = useContext(CartContext)
 
   const carrito = [...cart].length
-  const id = orderId.id
+
+
 
   return (
     <>
-      {
-        (carrito > 0 && id !== "") && <Cart/>
-      }
-      {( carrito > 0  && !buyIsFinished) && <Form/>}
-      
-      {
-       (id) && <OrdenDeCompra lastId={id}/>
-      }
+      {( carrito > 0 && !buyIsFinished )  && <Cart/>}
+      {( !orderId > 0 && !buyIsFinished )  && <Form/>}   
+      {(carrito === 0 && orderId) && <OrdenDeCompra/>}
     </>
   )
 }

@@ -6,24 +6,25 @@ export const CartContext = createContext();
 export const CartProvider = ({children}) => {
 
     let orderId; 
+    let totalPrice;
 
     //useState del carrito
     const [cart, setCart] = useState([]);
     //useSataet de la cantidad de unidades de cada producto
     const [cant, setCant] = useState(0);
-    //useState que maneja el precio total
-    const [totalPrice, setTotalPrice] = useState(0)
-    //obtener db de firestore
-    const db = getFirestore();
     //estado que indica si ya se realizola compra
     const [buyIsFinished, setBuyIsFinished] = useState(false);
+
+    //obtener db de firestore
+    const db = getFirestore();
+
     //función para agregar elementos al carrito
     const addItemToCart = (producto, count) => {
         
         const {id, nombre, precio, stock,imagen} = producto
 
     //asigno el counter al objeto product
-    let itemWithQuantity = {id, nombre, precio, stock,imagen, cantidad:count}
+    let itemWithQuantity = {id, nombre, precio, stock, imagen, cantidad:count}
 
         //funcion para evitar duplicados
         const isInCart = cart.some(item => item.id === id)
@@ -42,7 +43,7 @@ export const CartProvider = ({children}) => {
         //Sumamos la cantidad de elementos al useState de cantidad
         setCant(cant + count)
         //Sumamos el precio de los elementos al total
-        setTotalPrice(totalPrice + (precio * count));
+        totalPrice = {...totalPrice} + (precio * count);
                
     }
 
@@ -52,7 +53,7 @@ export const CartProvider = ({children}) => {
         const remove = cart.findIndex(p => p.id === product.id)
         const totalItemPrice = (cart[remove].precio * cart[remove].cantidad)
             
-            setTotalPrice(totalPrice - totalItemPrice)
+            totalPrice = {...totalPrice} - totalItemPrice
             setCant(cant - cart[remove].cantidad)
             cart.splice(remove,1)
             setCart([...cart])
@@ -62,10 +63,13 @@ export const CartProvider = ({children}) => {
     function cleanCart() {
         setCart([])
         setCant(0)
-        setTotalPrice(0)
+        totalPrice = 0
     }
 
     const onSubmit = async(data) => {
+        
+        const totalCompra =  {...totalPrice}
+
         const order = {
             Buyer: {
                 name:data.name,
@@ -74,18 +78,19 @@ export const CartProvider = ({children}) => {
             },
             Productos: cart.map(e => {
                 return {
-                    producto:
-                    e.nombre,
+                    producto:e.nombre,
                     precio: e.precio,
                     cantidad: e.cantidad
                 }
             }), 
             Total: {
-                    totalPrice
+                totalCompra
             }
         }
             
-        orderId = await addDoc(collection(db, "orders"), order);
+        const { id } = await addDoc(collection(db, "orders"), order);
+        orderId = id
+        console.log(orderId);
         
         setBuyIsFinished(true)
         cleanCart()   

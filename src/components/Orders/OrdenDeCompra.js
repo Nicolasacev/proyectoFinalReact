@@ -3,8 +3,8 @@ import './ordenDeCompra.css';
 import { CartContext } from '../CartContext/CartContext';
 import { Link } from 'react-router-dom';
 
-const OrdenDeCompra = ({lastId}) => {
-  const { setBuyIsFinished } = useContext(CartContext)
+const OrdenDeCompra = () => {
+  const { setBuyIsFinished, orderId } = useContext(CartContext)
 
   const cleanOrder = () => {
     setBuyIsFinished(false)
@@ -13,7 +13,7 @@ const OrdenDeCompra = ({lastId}) => {
   return (
     <div className='orderMain'>    
       <h2 className='orderSuccess'>¡Tu pedido está más cerca tuyo!</h2>
-      <div>ID de tu orden: {lastId}</div>
+      <div>ID de tu orden: {orderId}  </div>
       <Link to="/">
       <button className='toHome' onClick= {() => cleanOrder()}>Finalizar compra</button>
       </Link>

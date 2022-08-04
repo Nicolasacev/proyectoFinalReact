@@ -7,6 +7,8 @@ import { CartContext } from '../CartContext/CartContext';
 export const CartList = () => {
     const { totalPrice, cleanCart, cart } = useContext(CartContext)
     const carrito = [...cart]
+    const total = totalPrice
+
     return (
         <>
          { (carrito.length > 0)
@@ -19,7 +21,7 @@ export const CartList = () => {
             </table>
             <div className="totalContainer">
             <div>
-                <h3 className="itemCartTotal ">$ { totalPrice }</h3>
+                <h3 className="itemCartTotal ">$ { total }</h3>
             </div>
             <div>
                 <button type="button" className="btn btn-danger" onClick={()=>{cleanCart()}}>
