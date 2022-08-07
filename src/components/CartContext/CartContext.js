@@ -45,7 +45,8 @@ export const CartProvider = ({children}) => {
         const carrito = [...cart]
 
         const removeElement = carrito.indexOf(product); 
-        var newList =  [
+
+        let newList =  [
             ...carrito.slice(0, removeElement),
             ...carrito.slice(removeElement + 1),
           ]
