@@ -5,9 +5,20 @@ import { CartItem } from '../CartItem/CartItem';
 import { CartContext } from '../CartContext/CartContext';
 
 export const CartList = () => {
-    const { totalPrice, cleanCart, cart } = useContext(CartContext)
+    const { cleanCart, cart, setCompraTerminada } = useContext(CartContext)
+
     const carrito = [...cart]
-    const total = totalPrice
+    let total = 0
+    
+  
+    carrito.forEach(element => {
+        total = total + element.precio * element.cantidad
+    });
+
+    const finalizarCompra = () => {
+
+        setCompraTerminada(true)
+    }
 
     return (
         <>
@@ -24,13 +35,13 @@ export const CartList = () => {
                 <h3 className="itemCartTotal ">$ { total }</h3>
             </div>
             <div>
-                <button type="button" className="btn btn-danger" onClick={()=>{cleanCart()}}>
+                <button type="button" className="btn btn-danger" onClick={ () => { cleanCart() } }>
                     Vaciar Carrito
                 </button>        
             </div>
             <div>
                 <Link to={"/order"}>
-                    <button type="button" className="btn buy">
+                    <button type="button" className="btn buy"  onClick = { () =>{ finalizarCompra()} } >
                         Comprar
                     </button>
                 </Link>        

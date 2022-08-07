@@ -5,9 +5,18 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../CartContext/CartContext";
 
 export const CartWidget = () => {
-  const { cant, cart} = useContext(CartContext)
+
+  const {cart} = useContext(CartContext)
 
   const carrito = [...cart]
+
+  let totalProductos = 0
+  
+  carrito.forEach(e => {
+    totalProductos = totalProductos + e.cantidad
+  });
+
+
   return (
     <>
       { (carrito.length > 0)
@@ -15,7 +24,7 @@ export const CartWidget = () => {
       <div className="cartContainer">
         <Link to="/cart">
           <div>
-            <span>{cant}</span>
+            <span>{totalProductos}</span>
             <img src={IconoCartWidget} alt="carrito" className="iconoCarrito"></img>
           </div>
         </Link> 

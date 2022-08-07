@@ -4,19 +4,16 @@ import { addDoc, collection, getFirestore } from "firebase/firestore";
 export const CartContext = createContext();
 
 export const CartProvider = ({children}) => {
-
-    let orderId; 
-    let totalPrice;
+   
+    //obtener db de firestore
+    const db = getFirestore();
 
     //useState del carrito
     const [cart, setCart] = useState([]);
-    //useSataet de la cantidad de unidades de cada producto
-    const [cant, setCant] = useState(0);
-    //estado que indica si ya se realizola compra
-    const [buyIsFinished, setBuyIsFinished] = useState(false);
+     //para manejar los componentes del las ordenes de compra
+    const [compraTerminada, setCompraTerminada] = useState(false)
+    const [orderId, setOrderId] = useState()
 
-    //obtener db de firestore
-    const db = getFirestore();
 
     //función para agregar elementos al carrito
     const addItemToCart = (producto, count) => {
@@ -34,41 +31,38 @@ export const CartProvider = ({children}) => {
                     return p.id === id 
                     ? {...p, cantidad: p.cantidad + count}
                     : p
-                    
                 }))
 
                 : setCart( () => {
                     return cart.concat(itemWithQuantity)
                 })
-        //Sumamos la cantidad de elementos al useState de cantidad
-        setCant(cant + count)
-        //Sumamos el precio de los elementos al total
-        totalPrice = {...totalPrice} + (precio * count);
                
     }
 
     //función para remover elementos
     const removeFromCart = (product) => {
         
-        const remove = cart.findIndex(p => p.id === product.id)
-        const totalItemPrice = (cart[remove].precio * cart[remove].cantidad)
-            
-            totalPrice = {...totalPrice} - totalItemPrice
-            setCant(cant - cart[remove].cantidad)
-            cart.splice(remove,1)
-            setCart([...cart])
+        const carrito = [...cart]
+
+        const removeElement = carrito.indexOf(product); 
+        var newList =  [
+            ...carrito.slice(0, removeElement),
+            ...carrito.slice(removeElement + 1),
+          ]
+        setCart(newList)
     }
 
     //función para limpiar el carrito
     function cleanCart() {
         setCart([])
-        setCant(0)
-        totalPrice = 0
     }
 
     const onSubmit = async(data) => {
         
-        const totalCompra =  {...totalPrice}
+        let totalCompra = 0
+        cart.forEach(element => {
+            totalCompra = totalCompra + element.precio * element.cantidad
+        });
 
         const order = {
             Buyer: {
@@ -89,21 +83,17 @@ export const CartProvider = ({children}) => {
         }
             
         const { id } = await addDoc(collection(db, "orders"), order);
-        orderId = id
-        console.log(orderId);
-        
-        setBuyIsFinished(true)
+        setOrderId(id)
         cleanCart()   
     }
 
     return (
         <CartContext.Provider value={{
              cart,
-             cant,
-             totalPrice,
              orderId,
-             buyIsFinished,
-             setBuyIsFinished,
+             compraTerminada,
+             setOrderId,
+             setCompraTerminada,
              addItemToCart,
              removeFromCart,  
              cleanCart,

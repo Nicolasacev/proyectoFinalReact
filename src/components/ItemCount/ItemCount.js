@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import './ItemCountStyle.css';
 
-export const ItemCount = ( {producto, initial = 1, addToCart}) => {
-    const [count, setCount] = useState(initial);
+export const ItemCount = ( {producto, addToCart}) => {
+    const [count, setCount] = useState(1);
 
     const onAdd = () => { 
         if (count < producto.stock) {
