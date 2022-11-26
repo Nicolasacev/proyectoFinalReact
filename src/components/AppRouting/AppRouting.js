@@ -30,7 +30,7 @@ export const AppRouting = () =>{
                 style={{ background: "#2B373B" }}
                 buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
                 expires={60000}>
-                Este sitio web utiliza cookies.{" "}
+                ste sitio web utiliza cookies.{" "}
                 <span style={{ fontSize: "11px" }}>Usamos cookies para ofrecerte la mejor experiencia online. Déjanos saber si aceptas todas estas cookies.</span>
             </CookieConsent>
             <Footer/>
