@@ -6,7 +6,7 @@ import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer"
 import { ItemListContainer } from "../ItemListContainer/ItemListContainer"
 import { NavBar } from "../NavBar/NavBar"
 import {OrderContainer} from "../Orders/OrderContainer"
-import CookieConsent from "react-cookie-consent";
+import CookieConsent, { Cookies } from "react-cookie-consent";
 
 
 export const AppRouting = () =>{
@@ -22,16 +22,21 @@ export const AppRouting = () =>{
                 <Route path="/order" element={<OrderContainer/>}/>
             </Routes>
 
-            <CookieConsent 
-                hideOnAccept={true}
-                location="bottom"
-                buttonText="Entendido"
-                cookieName="myAwesomeCookieName2"
-                style={{ background: "#2B373B" }}
-                buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
-                expires={365}>
-                este sitio web utiliza cookies.{" "}
-                <span style={{ fontSize: "11px" }}>Usamos cookies para ofrecerte la mejor experiencia online. Déjanos saber si aceptas todas estas cookies.</span>
+            <CookieConsent
+              enableDeclineButton
+              buttonText = "Acepto" 
+              expires={365}
+              declineButtonText = "Rechazar"
+              containerClasses = "alert alert-dark col-lg-12" 
+              onDecline={() => {
+                alert("remove cookie here!");
+                Cookies.remove("Crashpartcookie")
+              }}>
+                Este sitio contiene cookies.{" "}
+                <br></br>
+                <span style={{ fontSize: "14px" }}>
+                Las cookies nos ayudan a brindarte informacion mas relevante, conoce nuestras <a href="/">"Politicas de privacidad"</a>.
+                </span>
             </CookieConsent>
             <Footer/>
         </BrowserRouter>
