@@ -24,19 +24,20 @@ export const AppRouting = () =>{
 
             <CookieConsent
               enableDeclineButton
-              buttonText = "Acepto" 
+              cookieName="crashpartcookie"
+              buttonText = "Aceptar" 
               expires={365}
+              style = {{background :"#000"}}
               declineButtonText = "Rechazar"
               containerClasses = "alert alert-dark col-lg-12" 
               onDecline={() => {
                 alert("remove cookie here!");
-                Cookies.remove("Crashpartcookie")
+                Cookies.remove("crashpartcookie")
               }}>
-                Este sitio contiene cookies.{" "}
+                Este sitio contiene cookies.
                 <br></br>
-                <span style={{ fontSize: "14px" }}>
-                Las cookies nos ayudan a brindarte informacion mas relevante, conoce nuestras <a href="/">"Politicas de privacidad"</a>.
-                </span>
+                <span style={{ fontSize: "12px"}}>Usamos cookies para mejorar su experiencia de navegacion en nuestra web, para mostrarle contenidos personalizados y para analizar el trafico en nuestro sitio web.Ver <a href="/" >Politicas de privacidad</a> </span>
+                
             </CookieConsent>
             <Footer/>
         </BrowserRouter>
