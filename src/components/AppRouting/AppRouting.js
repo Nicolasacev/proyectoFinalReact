@@ -27,17 +27,18 @@ export const AppRouting = () =>{
               cookieName="crashpartcookie"
               buttonText = "Aceptar" 
               expires={365}
-              style = {{background :"#000"}}
+              style = {{background :"#000", justifyItems:"center", width: "98vw", marginLeft: "4px" }}
               declineButtonText = "Rechazar"
               containerClasses = "alert alert-dark col-lg-12" 
+              contentStyle={{padding:"15px"}}
+
               onDecline={() => {
                 alert("remove cookie here!");
                 Cookies.remove("crashpartcookie")
               }}>
                 Este sitio contiene cookies.
                 <br></br>
-                <span style={{ fontSize: "12px"}}>Usamos cookies para mejorar su experiencia de navegacion en nuestra web, para mostrarle contenidos personalizados y para analizar el trafico en nuestro sitio web.Ver <a href="/" >Politicas de privacidad</a> </span>
-                
+                <span style={{ fontSize: "12px", textDecoration:"none"}}>Usamos cookies para mejorar su experiencia de navegación en nuestra web, para mostrarle contenidos personalizados y para analizar el tráfico en nuestro sitio web.<br></br>Ver nuestras <a href="/" style={{textDecoration:"none"}}>Políticas de privacidad</a> </span>
             </CookieConsent>
             <Footer/>
         </BrowserRouter>
