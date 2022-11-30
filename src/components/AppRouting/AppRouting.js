@@ -33,12 +33,12 @@ export const AppRouting = () =>{
               contentStyle={{padding:"15px"}}
 
               onDecline={() => {
-                alert("remove cookie here!");
+              //  alert("Se rechazaron las cookies!");
                 Cookies.remove("crashpartcookie")
               }}>
                 Este sitio contiene cookies.
                 <br></br>
-                <span style={{ fontSize: "12px", textDecoration:"none"}}>Usamos cookies para mejorar su experiencia de navegación en nuestra web, para mostrarle contenidos personalizados y para analizar el tráfico en nuestro sitio web.<br></br>Ver nuestras <a href="/" style={{textDecoration:"none"}}>Políticas de privacidad</a> </span>
+                <span style={{ fontSize: "12px", textDecoration:"none"}}>Usamos cookies para mejorar su experiencia de navegación en nuestra web, para mostrarle contenidos personalizados y para analizar el tráfico en nuestro sitio.<br></br>Ver nuestras <a href="/" style={{textDecoration:"none"}}>Políticas de privacidad</a> </span>
             </CookieConsent>
             <Footer/>
         </BrowserRouter>

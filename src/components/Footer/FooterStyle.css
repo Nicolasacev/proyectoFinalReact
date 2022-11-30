@@ -4,6 +4,7 @@ footer{
     display: flex;
     justify-content: space-evenly;
     flex-flow: row wrap;
+    text-decoration: none;
 }
 
 li{

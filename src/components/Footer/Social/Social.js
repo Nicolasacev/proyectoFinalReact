@@ -3,7 +3,7 @@ import React from 'react'
 export const Social = () => {
   return (
     <div className='childFooter'>
-        <h5>Comunicate con nosotros</h5>
+        <h5>Conocenos</h5>
         <br />
         <ul>
             <li><a href="mailto:info@crashparts.com">Correo</a></li>
